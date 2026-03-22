@@ -6,6 +6,7 @@ function userprofile(username){
     return fetch(`https://api.github.com/users/${username}`).then((raw)=> raw.json())
     if(!raw.ok) throw new ERROR("user not found");
     return raw.json(); 
+
 }
 
 
@@ -19,6 +20,7 @@ function userRepos(username){
 function decorateProfile(details){
     console.log(details);
     let data= `  
+     <a href="${details.html_url}" target="_blank">
           <!-- Avatar -->
           <img src="${details.avatar_url}" class=" w-20 h-20 rounded-full border-2 border-blue-500 object-cover"/>
 
@@ -54,6 +56,7 @@ function decorateProfile(details){
         </div> `
 
         card.innerHTML= data;
+
 }
 
 searchbtn.addEventListener("click", function(){
